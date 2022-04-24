@@ -8,10 +8,8 @@ import java.net.URL
 
 buildscript {
   dependencies {
-    val kotlinVersion = System.getenv("MOSHI_KOTLIN_VERSION")
-      ?: libs.versions.kotlin.get()
-    val kspVersion = System.getenv("MOSHI_KSP_VERSION")
-      ?: libs.versions.ksp.get()
+    val kotlinVersion = "1.6.21"
+    val kspVersion = "1.6.21-1.0.5"
     classpath(kotlin("gradle-plugin", version = kotlinVersion))
     classpath("com.google.devtools.ksp:symbol-processing-gradle-plugin:$kspVersion")
     // https://github.com/melix/japicmp-gradle-plugin/issues/36
@@ -87,6 +85,7 @@ subprojects {
 //        @Suppress("SuspiciousCollectionReassignment")
 //        freeCompilerArgs += listOf("-progressive")
         jvmTarget = libs.versions.jvmTarget.get()
+        useFir = true
       }
     }
 
